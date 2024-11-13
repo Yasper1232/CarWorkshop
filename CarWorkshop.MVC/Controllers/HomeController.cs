@@ -39,6 +39,36 @@ public class HomeController : Controller
         return View(model);
     }
 
+    public IActionResult About()
+    {
+
+        var model = new List<AboutModel>()
+        {
+            new AboutModel()
+            {
+            Title = "Kaczka",
+            Description ="swietna super pyszna",
+            Tags = new[] {"jedzenie","swietne"},
+
+            },
+
+            new AboutModel()
+            {
+            Title = "kura",
+            Description ="biega skacze klaszcze",
+            Tags = new[] {"zwierzontka","super"},
+
+            }
+
+
+        };
+        
+        
+
+
+        return View(model);
+    }
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

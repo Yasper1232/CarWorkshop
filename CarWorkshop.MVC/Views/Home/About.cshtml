@@ -1,0 +1,13 @@
+﻿@model List<AboutModel>
+
+
+
+@foreach(var about in Model)
+{
+	
+	<p>@about.Title | @about.Description | @about.Tags</p>
+
+}
+
+
+@Model
