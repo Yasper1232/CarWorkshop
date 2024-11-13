@@ -1,0 +1,47 @@
+﻿@model List<Person>
+
+@{
+    var currentYear = DateTime.Now.Year;
+
+    ViewData["Title"] = "Privacy Policy";
+
+    var dayOfWeek = DateTime.Now.DayOfWeek;
+
+    
+
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Use this page to detail your site's privacy policy.</p>
+
+<p>It is @currentYear :0</p>
+
+@if(dayOfWeek == DayOfWeek.Sunday || dayOfWeek == DayOfWeek.Saturday)
+{
+    <p>It is weekend </p>
+}
+else
+{
+    <p>not yet weekend :(</p>
+}
+
+
+@switch(dayOfWeek)
+{
+    case DayOfWeek.Wednesday:
+        <p>its wednesday :( </p>
+        break;
+    default:
+        <p>its not monday :P</p>
+        break;
+
+}
+
+<p>test</p>
+
+First Name | Last Name
+@foreach(var pearson in Model)
+{
+    <p>@pearson.FirstName | @pearson.LastName</p>
+}
+@Model
