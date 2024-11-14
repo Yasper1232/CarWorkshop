@@ -42,24 +42,17 @@ public class HomeController : Controller
     public IActionResult About()
     {
 
-        var model = new List<AboutModel>()
-        {
+        var model = 
+        
             new AboutModel()
             {
-            Title = "Kaczka",
-            Description ="swietna super pyszna",
-            Tags = new[] {"jedzenie","swietne"},
+            Title = "CarWorkshop application",
+            Description ="Some description",
+            Tags = new List<string>() {"car","app","free"}
 
-            },
+            
 
-            new AboutModel()
-            {
-            Title = "kura",
-            Description ="biega skacze klaszcze",
-            Tags = new[] {"zwierzontka","super"},
-
-            }
-
+         
 
         };
         
