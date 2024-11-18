@@ -1,4 +1,5 @@
-﻿using CarWorkshop.Application.Services;
+﻿using CarWorkshop.Application.Mappings;
+using CarWorkshop.Application.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,8 @@ namespace CarWorkshop.Application.Extensions
         {
             
             services.AddScoped<ICarWorkshopService, CarWorkshopService>();
+
+            services.AddAutoMapper(typeof(CarWorkshopMappingProfile));
 
         }
     }
