@@ -1,7 +1,7 @@
 ﻿@{
 
-    var action = ViewContext.RouteData.Values["Action"]!.ToString();
-    var controller = ViewContext.RouteData.Values["Controller"]!.ToString();
+    var action = ViewContext.RouteData.Values["Action"]?.ToString();
+    var controller = ViewContext.RouteData.Values["Controller"]?.ToString();
 
 }
 
@@ -41,7 +41,9 @@
                             <a class="nav-link text-dark @(controller =="CarWorkshop" && action == "Index" ? "active" : "")" asp-area="" asp-controller="CarWorkshop" asp-action="Index">Car Workshops</a>
                         </li>
                     </ul>
+                    <partial name="_LoginPartial" />
                 </div>
+                
             </div>
         </nav>
     </header>

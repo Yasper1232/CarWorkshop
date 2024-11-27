@@ -5,12 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CarWorkshop.Domain.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace CarWorkshop.Infrastructure.Persistence
 {
-    public class CarWorkshopDbContext : DbContext
+    public class CarWorkshopDbContext : IdentityDbContext
     {
-        public DbSet<Domain.Entities.CarWorkshop> CarWorkshop { get; set; }
 
 
      
@@ -18,8 +18,13 @@ namespace CarWorkshop.Infrastructure.Persistence
         {
             
         }
+
+        public DbSet<Domain.Entities.CarWorkshop> CarWorkshop { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Domain.Entities.CarWorkshop>()
                 .OwnsOne(c => c.ContactDetails);
         }
