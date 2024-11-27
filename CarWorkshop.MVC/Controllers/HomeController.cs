@@ -18,7 +18,15 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Privacy()
+    public IActionResult NoAccess()
+    {
+
+
+        return View();
+    }
+
+
+	public IActionResult Privacy()
     {
 
         var model = new List<Person>()
