@@ -19,6 +19,7 @@ namespace CarWorkshop.Domain.Entities
 
         public string EncodedName { get; private set; } = default!;
 
+        public List<CarWorkshopService> Services { get; set; } = new();
         public string? About { get; set; }
 
 		public string? CreatedById { get; set; }

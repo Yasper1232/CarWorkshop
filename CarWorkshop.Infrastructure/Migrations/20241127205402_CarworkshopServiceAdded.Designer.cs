@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarWorkshop.Infrastructure.Migrations
 {
     [DbContext(typeof(CarWorkshopDbContext))]
-    [Migration("20241127145250_test")]
-    partial class test
+    [Migration("20241127205402_CarworkshopServiceAdded")]
+    partial class CarworkshopServiceAdded
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,6 +58,32 @@ namespace CarWorkshop.Infrastructure.Migrations
                     b.HasIndex("CreatedById");
 
                     b.ToTable("CarWorkshop");
+                });
+
+            modelBuilder.Entity("CarWorkshop.Domain.Entities.CarWorkshopService", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CarWorkshopId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Cost")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CarWorkshopId");
+
+                    b.ToTable("Services");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -199,7 +225,7 @@ namespace CarWorkshop.Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                   // b.ToTable("AspNetUserClaims", (string)null);
+                    b.ToTable("AspNetUserClaims", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
@@ -299,6 +325,17 @@ namespace CarWorkshop.Infrastructure.Migrations
                     b.Navigation("CreatedBy");
                 });
 
+            modelBuilder.Entity("CarWorkshop.Domain.Entities.CarWorkshopService", b =>
+                {
+                    b.HasOne("CarWorkshop.Domain.Entities.CarWorkshop", "CarWorkshop")
+                        .WithMany("Services")
+                        .HasForeignKey("CarWorkshopId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CarWorkshop");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -348,6 +385,11 @@ namespace CarWorkshop.Infrastructure.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("CarWorkshop.Domain.Entities.CarWorkshop", b =>
+                {
+                    b.Navigation("Services");
                 });
 #pragma warning restore 612, 618
         }

@@ -20,4 +20,8 @@
     <ProjectReference Include="..\CarWorkshop.Application\CarWorkshop.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>
